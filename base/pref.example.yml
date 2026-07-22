@@ -157,3 +157,7 @@ advanced:
   script_clean_context: true
   async_fetch_ruleset: false
   skip_failed_links: false
+  # User-Agent used when fetching subscriptions. Default mimics mihomo (clash.meta).
+  request_user_agent: "clash.meta/1.19.29"
+  # Whether to send SubConverter-Request and SubConverter-Version headers.
+  request_header_subconverter: false

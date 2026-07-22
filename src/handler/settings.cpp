@@ -560,6 +560,8 @@ void readYAMLConf(YAML::Node &node)
         node["advanced"]["script_clean_context"] >> global.scriptCleanContext;
         node["advanced"]["async_fetch_ruleset"] >> global.asyncFetchRuleset;
         node["advanced"]["skip_failed_links"] >> global.skipFailedLinks;
+        node["advanced"]["request_user_agent"] >> global.requestUserAgent;
+        node["advanced"]["request_header_subconverter"] >> global.requestHeaderSubconverter;
     }
     writeLog(0, "Load preference settings in YAML format completed.", LOG_LEVEL_INFO);
 }
@@ -737,7 +739,9 @@ void readTOMLConf(toml::value &root)
                   "cache_ruleset", cache_ruleset,
                   "script_clean_context", global.scriptCleanContext,
                   "async_fetch_ruleset", global.asyncFetchRuleset,
-                  "skip_failed_links", global.skipFailedLinks
+                  "skip_failed_links", global.skipFailedLinks,
+                  "request_user_agent", global.requestUserAgent,
+                  "request_header_subconverter", global.requestHeaderSubconverter
     );
 
     if(global.printDbgInfo)
@@ -1066,6 +1070,8 @@ void readConf()
     ini.get_bool_if_exist("script_clean_context", global.scriptCleanContext);
     ini.get_bool_if_exist("async_fetch_ruleset", global.asyncFetchRuleset);
     ini.get_bool_if_exist("skip_failed_links", global.skipFailedLinks);
+    ini.get_if_exist("request_user_agent", global.requestUserAgent);
+    ini.get_bool_if_exist("request_header_subconverter", global.requestHeaderSubconverter);
 
     writeLog(0, "Load preference settings in INI format completed.", LOG_LEVEL_INFO);
 }

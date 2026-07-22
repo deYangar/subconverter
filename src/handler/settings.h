@@ -33,6 +33,8 @@ struct Settings
     int logLevel = LOG_LEVEL_VERBOSE;
     long maxAllowedDownloadSize = 1048576L;
     string_map aliases;
+    std::string requestUserAgent = "clash.meta/1.19.29";
+    bool requestHeaderSubconverter = false;
 
     //global variables for template
     std::string templatePath = "templates";

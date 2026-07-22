@@ -1,7 +1,21 @@
+# deYangar 分组配置（TOML格式，用于 Clash 等）
+# 注意：组名不加emoji，因为emoji主要用于节点名；rulesets.txt里引用这里定义的组名
+
+#========== 主选择 / 自动测速 ==========
 [[custom_groups]]
-name = "🔰 节点选择"
+name = "🚀 节点选择"
 type = "select"
-rule = ["[]♻️ 自动选择", "[]🎯 全球直连", ".*"]
+rule = ["[]🚀 手动切换", "[]♻️ 自动选择", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", "[]🇦🇺 澳大利亚", "[]🇦🇷 阿根廷", "[]🇮🇳 印度", "[]🛩️ 手动选择备用", "[]DIRECT"]
+
+[[custom_groups]]
+name = "🚀 手动切换"
+type = "select"
+rule = ["[]DIRECT", ".*"]
+
+[[custom_groups]]
+name = "🛩️ 手动选择备用"
+type = "select"
+rule = ["[]DIRECT", ".*"]
 
 [[custom_groups]]
 name = "♻️ 自动选择"
@@ -9,83 +23,142 @@ type = "url-test"
 rule = [".*"]
 url = "http://www.gstatic.com/generate_204"
 interval = 300
+tolerance = 50
+
+#========== 地区分流 ==========
+[[custom_groups]]
+name = "🇭🇰 香港"
+type = "select"
+rule = ["(🇭🇰|香港|HK|HKG|Hong Kong)"]
 
 [[custom_groups]]
-name = "🎥 NETFLIX"
+name = "🇹🇼 台湾"
 type = "select"
-rule = [
-    "[]🔰 节点选择",
-    "[]♻️ 自动选择",
-    "[]🎯 全球直连",
-    ".*"
-]
+rule = ["(🇹🇼|台湾|TW|TWN|Taiwan|台北)"]
 
 [[custom_groups]]
-name = "⛔️ 广告拦截"
+name = "🇯🇵 日本"
 type = "select"
-rule = ["[]🛑 全球拦截",
-"[]🎯 全球直连",
-"[]🔰 节点选择"
-]
+rule = ["(🇯🇵|日本|JP|JPN|Japan)"]
 
 [[custom_groups]]
-name = "🚫 运营劫持"
+name = "🇸🇬 新加坡"
 type = "select"
-rule = ["[]🛑 全球拦截",
-"[]🎯 全球直连",
-"[]🔰 节点选择"]
+rule = ["(🇸🇬|新加坡|SG|SGP|Singapore|坡縣)"]
 
 [[custom_groups]]
-name = "🌍 国外媒体"
+name = "🇲🇾 马来西亚"
 type = "select"
-rule = ["[]🔰 节点选择",
-"[]♻️ 自动选择",
-"[]🎯 全球直连",
-".*"]
+rule = ["(🇲🇾|马来西亚|MY|MYS|Malaysia|大馬)"]
 
 [[custom_groups]]
-name = "🌏 国内媒体"
+name = "🇺🇲 美国"
 type = "select"
-rule = ["[]🎯 全球直连",
-"(HGC|HKBN|PCCW|HKT|深台|彰化|新北|台|hk|港|tw)",
-"[]🔰 节点选择"]
+rule = ["(🇺🇲|美国|US|USA|United States)"]
 
 [[custom_groups]]
-name = "Ⓜ️ 微软服务"
+name = "🇬🇧 英国"
 type = "select"
-rule = ["[]🎯 全球直连",
-"[]🔰 节点选择",
-".*"]
+rule = ["(🇬🇧|英国|UK|GB|GBR|United Kingdom)"]
 
 [[custom_groups]]
-name = "📲 电报信息"
+name = "🇦🇺 澳大利亚"
 type = "select"
-rule = ["[]🔰 节点选择",
-"[]🎯 全球直连",
-".*"]
+rule = ["(🇦🇺|澳大利亚|AU|Australia|澳洲)"]
 
 [[custom_groups]]
-name = "🍎 苹果服务"
+name = "🇦🇷 阿根廷"
 type = "select"
-rule = ["[]🔰 节点选择",
-"[]🎯 全球直连",
-"[]♻️ 自动选择",
-".*"]
+rule = ["(🇦🇷|阿根廷|AR|ARG|Argentina)"]
 
 [[custom_groups]]
-name = "🎯 全球直连"
+name = "🇮🇳 印度"
 type = "select"
-rule = ["[]DIRECT"]
+rule = ["(🇮🇳|印度|IN|India)"]
+
+#========== 应用分流 ==========
+[[custom_groups]]
+name = "🛸 IP归属地"
+type = "select"
+rule = ["[]DIRECT", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", "[]🇦🇺 澳大利亚", ".*"]
 
 [[custom_groups]]
-name = "🛑 全球拦截"
+name = "📲 Telegram"
 type = "select"
-rule = ["[]REJECT", "[]DIRECT"]
+rule = ["[]🚀 节点选择", "[]♻️ 自动选择", "[]🛩️ 手动选择备用"]
 
+[[custom_groups]]
+name = "🤖 Discord"
+type = "select"
+rule = ["[]🚀 节点选择", "[]♻️ 自动选择", "[]🛩️ 手动选择备用"]
+
+[[custom_groups]]
+name = "💬 OpenAi"
+type = "select"
+rule = ["[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇦🇺 澳大利亚", "[]🇺🇲 美国", "[]🇬🇧 英国", ".*"]
+
+[[custom_groups]]
+name = "📹 YouTube"
+type = "select"
+rule = ["[]🚀 节点选择", "[]♻️ 自动选择", "[]🛩️ 手动选择备用", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇦🇺 澳大利亚", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", ".*"]
+
+[[custom_groups]]
+name = "📺 哔哩哔哩"
+type = "select"
+rule = ["[]DIRECT", "[]🚀 节点选择", "[]♻️ 自动选择", "[]🛩️ 手动选择备用", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", ".*"]
+
+[[custom_groups]]
+name = "🗺 Speedtest"
+type = "select"
+rule = ["[]🚀 节点选择", "[]DIRECT"]
+
+[[custom_groups]]
+name = "📢 Google"
+type = "select"
+rule = ["[]🚀 节点选择", "[]♻️ 自动选择", "[]🛩️ 手动选择备用", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", ".*"]
+
+[[custom_groups]]
+name = "Ⓜ️ Microsoft"
+type = "select"
+rule = ["[]🚀 节点选择", "[]DIRECT", "[]♻️ 自动选择", "[]🛩️ 手动选择备用", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", ".*"]
+
+[[custom_groups]]
+name = "🍎 Apple"
+type = "select"
+rule = ["[]🚀 节点选择", "[]♻️ 自动选择", "[]🛩️ 手动选择备用", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", ".*"]
+
+[[custom_groups]]
+name = "🕊 X"
+type = "select"
+rule = ["[]🚀 节点选择", "[]♻️ 自动选择", "[]🛩️ 手动选择备用", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", ".*"]
+
+[[custom_groups]]
+name = "🎮 Steam"
+type = "select"
+rule = ["[]DIRECT", "[]🇮🇳 印度", "[]🇦🇷 阿根廷", ".*"]
+
+[[custom_groups]]
+name = "🎮 Ubisoft"
+type = "select"
+rule = ["[]DIRECT", "[]🇮🇳 印度", "[]🇦🇷 阿根廷", ".*"]
+
+[[custom_groups]]
+name = "🎮 游戏平台"
+type = "select"
+rule = ["[]DIRECT", "[]🇮🇳 印度", "[]🇦🇷 阿根廷", ".*"]
+
+[[custom_groups]]
+name = "😋 Hentai"
+type = "select"
+rule = ["[]🇺🇲 美国", "[]DIRECT", ".*"]
+
+[[custom_groups]]
+name = "🛑 AdBlock"
+type = "select"
+rule = ["[]REJECT", "[]🚀 节点选择", "[]DIRECT"]
+
+#========== 漏网之鱼 ==========
 [[custom_groups]]
 name = "🐟 漏网之鱼"
 type = "select"
-rule = ["[]🔰 节点选择",
-"[]🎯 全球直连",
-"[]♻️ 自动选择",
-".*"]
+rule = ["[]DIRECT", "[]🚀 节点选择", "[]♻️ 自动选择", "[]🛩️ 手动选择备用", "[]🇭🇰 香港", "[]🇹🇼 台湾", "[]🇯🇵 日本", "[]🇸🇬 新加坡", "[]🇲🇾 马来西亚", "[]🇺🇲 美国", "[]🇬🇧 英国", ".*"]

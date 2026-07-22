@@ -6,7 +6,7 @@ WORKDIR /
 RUN set -xe && \
     apk add --no-cache --virtual .build-tools git g++ build-base linux-headers cmake python3 && \
     apk add --no-cache --virtual .build-deps curl-dev rapidjson-dev pcre2-dev yaml-cpp-dev && \
-    git clone --no-checkout https://github.com/ftk/quickjspp.git && \
+    git clone --no-checkout https://ghfast.top/https://github.com/ftk/quickjspp.git && \
     cd quickjspp && \
     git fetch origin 0c00c48895919fc02da3f191a2da06addeb07f09 && \
     git checkout 0c00c48895919fc02da3f191a2da06addeb07f09 && \
@@ -19,7 +19,7 @@ RUN set -xe && \
     install -m644 quickjs/quickjs.h quickjs/quickjs-libc.h /usr/include/quickjs/ && \
     install -m644 quickjspp.hpp /usr/include && \
     cd .. && \
-    git clone https://github.com/PerMalmberg/libcron --depth=1 && \
+    git clone https://ghfast.top/https://github.com/PerMalmberg/libcron --depth=1 && \
     cd libcron && \
     git submodule update --init && \
     cmake -DCMAKE_BUILD_TYPE=Release . && \
@@ -30,7 +30,7 @@ RUN set -xe && \
     install -d /usr/include/date/ && \
     install -m644 libcron/externals/date/include/date/* /usr/include/date/ && \
     cd .. && \
-    git clone https://github.com/ToruNiina/toml11 --branch="v4.3.0" --depth=1 && \
+    git clone https://ghfast.top/https://github.com/ToruNiina/toml11 --branch="v4.3.0" --depth=1 && \
     cd toml11 && \
     cmake -DCMAKE_CXX_STANDARD=11 . && \
     make install -j $THREADS && \

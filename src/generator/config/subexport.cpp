@@ -1938,6 +1938,16 @@ void proxyToQuanX(std::vector<Proxy> &nodes, INIReader &ini, std::vector<Ruleset
                     proxyStr += ", over-tls=false";
                 }
                 break;
+            case ProxyType::AnyTLS: // [MOD 2026-08-23] QuanX 输出支持 anytls 节点
+                proxyStr = "anytls = " + hostname + ":" + port + ", password=" + password;
+                if (tlssecure) {
+                    proxyStr += ", over-tls=true, tls-host=" + (!sni.empty() ? sni : host);
+                    if (!tls13.is_undef())
+                        proxyStr += ", tls13=" + std::string(tls13 ? "true" : "false");
+                } else {
+                    proxyStr += ", over-tls=false";
+                }
+                break;
             case ProxyType::SOCKS5:
                 proxyStr = "socks5 = " + hostname + ":" + port;
                 if (!username.empty() && !password.empty()) {

@@ -370,7 +370,7 @@ void rulesetToSurge(INIReader &base_rule, std::vector<RulesetContent> &ruleset_c
                 }
                 else if(surge_ver == -4 && !remote_path_prefix.empty())
                 {
-                    strLine = remote_path_prefix + "/getruleset?type=1&url=" + urlSafeBase64Encode(rule_path_typed) + "," + rule_group;
+                    strLine = remote_path_prefix + "/getruleset?type=1&url=" + urlSafeBase64Encode(rule_path_typed) + ", policy=" + rule_group + ", tag=" + rule_group + ", enabled=true";
                     base_rule.set("Remote Rule", "{NONAME}", strLine);
                     continue;
                 }
@@ -394,7 +394,7 @@ void rulesetToSurge(INIReader &base_rule, std::vector<RulesetContent> &ruleset_c
                 }
                 else if(surge_ver == -4)
                 {
-                    strLine = rule_path + "," + rule_group;
+                    strLine = rule_path + ", policy=" + rule_group + ", tag=" + rule_group + ", enabled=true";
                     base_rule.set("Remote Rule", "{NONAME}", strLine);
                     continue;
                 }

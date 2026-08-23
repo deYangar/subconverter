@@ -2454,6 +2454,13 @@ proxyToLoon(std::vector<Proxy> &nodes, const std::string &base_conf,
                         proxy += ",skip-cert-verify=" + std::string(scv.get() ? "true" : "false");
                 }
                 break;
+            case ProxyType::AnyTLS: // [MOD 2026-08-23] Loon output support anytls nodes (Surge 4 compatible syntax)
+                proxy = "anytls," + hostname + "," + port + ",password=" + password;
+                if (!sni.empty())
+                    proxy += ",sni=" + sni;
+                if (!scv.is_undef())
+                    proxy += ",skip-cert-verify=" + std::string(scv.get() ? "true" : "false");
+                break;
             case ProxyType::WireGuard:
                 proxy = "wireguard, interface-ip=" + x.SelfIP;
                 if (!x.SelfIPv6.empty())

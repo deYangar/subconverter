@@ -1938,12 +1938,21 @@ void proxyToQuanX(std::vector<Proxy> &nodes, INIReader &ini, std::vector<Ruleset
                     proxyStr += ", over-tls=false";
                 }
                 break;
-            case ProxyType::AnyTLS: // [MOD 2026-08-23] QuanX 输出支持 anytls 节点
-                proxyStr = "anytls = " + hostname + ":" + port + ", password=" + password;
+            case ProxyType::AnyTLS: // [MOD 2026-08-23] QuanX 输出支持 anytls 节点（官方格式: anytls=host:port, password=*** over-tls=true, tls-host=***）
+                proxyStr = "anytls=" + hostname + ":" + port + ", password=" + password;
                 if (tlssecure) {
-                    proxyStr += ", over-tls=true, tls-host=" + (!sni.empty() ? sni : host);
+                    proxyStr += ", over-tls=true";
+                    if (!x.SNI.empty()) // [MOD] anytls 的 SNI 存在 x.SNI 字段（非 x.ServerName）
+                        proxyStr += ", tls-host=" + x.SNI;
+                    else if (!host.empty())
+                        proxyStr += ", tls-host=" + host;
                     if (!tls13.is_undef())
                         proxyStr += ", tls13=" + std::string(tls13 ? "true" : "false");
+                    if (!publickey.empty()) {
+                        proxyStr += ", reality-base64-pubkey=" + publickey;
+                        if (!shortid.empty())
+                            proxyStr += ", reality-hex-shortid=" + shortid;
+                    }
                 } else {
                     proxyStr += ", over-tls=false";
                 }
@@ -2454,10 +2463,10 @@ proxyToLoon(std::vector<Proxy> &nodes, const std::string &base_conf,
                         proxy += ",skip-cert-verify=" + std::string(scv.get() ? "true" : "false");
                 }
                 break;
-            case ProxyType::AnyTLS: // [MOD 2026-08-23] Loon output support anytls nodes (Surge 4 compatible syntax)
-                proxy = "anytls," + hostname + "," + port + ",password=" + password;
-                if (!sni.empty())
-                    proxy += ",sni=" + sni;
+            case ProxyType::AnyTLS: // [MOD 2026-08-23] Loon 输出支持 anytls 节点（官方格式: 名称 = AnyTLS,host,port,"password",sni=***）
+                proxy = "AnyTLS," + hostname + "," + port + ",\"" + password + "\"";
+                if (!x.SNI.empty()) // [MOD] anytls 的 SNI 存在 x.SNI 字段（非 x.ServerName）
+                    proxy += ",sni=" + x.SNI;
                 if (!scv.is_undef())
                     proxy += ",skip-cert-verify=" + std::string(scv.get() ? "true" : "false");
                 break;

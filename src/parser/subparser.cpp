@@ -336,6 +336,7 @@ void anyTlSConstruct(Proxy &node, const std::string &group, const std::string &r
     node.AlpnList = AlpnList;
     node.SNI = sni;
     node.Fingerprint = fingerprint;
+    node.TLSSecure = true; // [MOD 2026-08-23] anytls 协议基于 TLS，默认开启（修复 over-tls=false 导致节点无法连接）
     node.IdleSessionCheckInterval = idleSessionCheckInterval;
     node.IdleSessionTimeout = idleSessionTimeout;
     node.MinIdleSession = minIdleSession;

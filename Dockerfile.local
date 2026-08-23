@@ -39,9 +39,10 @@ RUN set -xe && \
 # Copy local source instead of cloning from GitHub
 COPY . /subconverter
 WORKDIR /subconverter
+# [2026-08-23] skip update_rules.py: build container DNS cannot resolve ghfast.top/GitHub.
+# Rulesets now use raw URLs directly (fetched at runtime), pre-fetch is unnecessary.
 RUN python3 -m ensurepip && \
     python3 -m pip install gitpython && \
-    python3 scripts/update_rules.py -c scripts/rules_config.conf && \
     cmake -DCMAKE_BUILD_TYPE=Release . && \
     make -j $THREADS
 

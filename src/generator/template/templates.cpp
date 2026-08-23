@@ -393,17 +393,18 @@ int renderClashScript(YAML::Node &base_rule, std::vector<RulesetContent> &rulese
                     while(std::find(groups.begin(), groups.end(), rule_name) != groups.end())
                         rule_name = old_rule_name + " " + std::to_string(idx++);
                     names[rule_name] = rule_group;
-                    urls[rule_name] = rule_path_typed;
+                    // [MOD 2026-08-22] 所有类型规则集直连原始 URL（不经过 subconverter API 转发）
+                    urls[rule_name] = "*" + rule_path;
                     rule_type[rule_name] = x.rule_type;
                     ruleset_interval[rule_name] = x.update_interval;
                     ruleset_format[rule_name] = x.rule_format;
-                    if(clash_classical_ruleset)
-                    {
-                        if(!script)
-                            rules.emplace_back("RULE-SET," + rule_name + "," + rule_group);
-                        groups.emplace_back(rule_name);
-                        continue;
-                    }
+                    // [MOD 2026-08-22] 无前缀规则集也统一按 classical 输出：
+                    // mihomo classical behavior 支持 Surge 行格式；而 domain/ipcidr behavior 要求 payload 格式，
+                    // 直连行格式文件会报 "file must have a payload field"
+                    if(!script)
+                        rules.emplace_back("RULE-SET," + rule_name + "," + rule_group);
+                    groups.emplace_back(rule_name);
+                    continue;
                 }
                 else
                     continue;
@@ -504,6 +505,8 @@ int renderClashScript(YAML::Node &base_rule, std::vector<RulesetContent> &rulese
             base_rule["rule-providers"][yaml_key]["path"] = "./providers/" + std::to_string(hash_(url)) + "_domain.yaml";
             if(!format.empty())
                 base_rule["rule-providers"][yaml_key]["format"] = format;
+            else if(url[0] == '*')
+                base_rule["rule-providers"][yaml_key]["format"] = "text"; // [MOD] 直连行格式规则集需 format: text
             if(interval)
                 base_rule["rule-providers"][yaml_key]["interval"] = interval;
         }
@@ -521,6 +524,8 @@ int renderClashScript(YAML::Node &base_rule, std::vector<RulesetContent> &rulese
             base_rule["rule-providers"][yaml_key]["path"] = "./providers/" + std::to_string(hash_(url)) + "_ipcidr.yaml";
             if(!format.empty())
                 base_rule["rule-providers"][yaml_key]["format"] = format;
+            else if(url[0] == '*')
+                base_rule["rule-providers"][yaml_key]["format"] = "text"; // [MOD] 直连行格式规则集需 format: text
             if(interval)
                 base_rule["rule-providers"][yaml_key]["interval"] = interval;
         }
@@ -536,6 +541,8 @@ int renderClashScript(YAML::Node &base_rule, std::vector<RulesetContent> &rulese
             base_rule["rule-providers"][yaml_key]["path"] = "./providers/" + std::to_string(hash_(url)) + ".yaml";
             if(!format.empty())
                 base_rule["rule-providers"][yaml_key]["format"] = format;
+            else if(url[0] == '*')
+                base_rule["rule-providers"][yaml_key]["format"] = "text"; // [MOD] 直连行格式规则集需 format: text
             if(interval)
                 base_rule["rule-providers"][yaml_key]["interval"] = interval;
         }

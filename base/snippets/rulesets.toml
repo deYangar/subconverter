@@ -4,127 +4,127 @@
 
 [[rulesets]]
 group = "🛑 AdBlock"
-ruleset = "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list"
 
 [[rulesets]]
 group = "🛑 AdBlock"
-ruleset = "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list"
 
 [[rulesets]]
 group = "🛑 AdBlock"
-ruleset = "https://cdn.jsdelivr.net/gh/lwd-temp/anti-ip-attribution@main/generated/rule-set-reject.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/lwd-temp/anti-ip-attribution@main/generated/rule-set-reject.list"
 
 [[rulesets]]
 group = "📲 Telegram"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.list"
 
 [[rulesets]]
 group = "📲 Telegram"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/telegra_ph_picture.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/telegra_ph_picture.list"
 
 [[rulesets]]
 group = "🛸 IP归属地"
-ruleset = "https://cdn.jsdelivr.net/gh/lwd-temp/anti-ip-attribution@main/generated/rule-set-proxy.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/lwd-temp/anti-ip-attribution@main/generated/rule-set-proxy.list"
 
 [[rulesets]]
 group = "🤖 Discord"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Discord/Discord.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Discord/Discord.list"
 
 [[rulesets]]
 group = "🤖 Discord"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Discord_TUN.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Discord_TUN.list"
 
 [[rulesets]]
 group = "😋 Hentai"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Hentai.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Hentai.list"
 
 [[rulesets]]
 group = "DIRECT"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/DIRECT.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/DIRECT.list"
 
 [[rulesets]]
 group = "💬 OpenAi"
-ruleset = "https://cdn.jsdelivr.net/gh/cutethotw/ClashRule@main/Rule/ChatGPT.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/cutethotw/ClashRule@main/Rule/ChatGPT.list"
 
 [[rulesets]]
 group = "💬 OpenAi"
-ruleset = "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/AI.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/AI.list"
 
 [[rulesets]]
 group = "💬 OpenAi"
-ruleset = "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list"
 
 [[rulesets]]
 group = "📹 YouTube"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.list"
 
 [[rulesets]]
 group = "📺 哔哩哔哩"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.list"
 
 [[rulesets]]
 group = "📺 哔哩哔哩"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Bilibili.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Bilibili.list"
 
 [[rulesets]]
 group = "🗺 Speedtest"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Speedtest/Speedtest.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Speedtest/Speedtest.list"
 
 [[rulesets]]
 group = "📢 Google"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.list"
 
 [[rulesets]]
 group = "Ⓜ️ Microsoft"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.list"
 
 [[rulesets]]
 group = "Ⓜ️ Microsoft"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.list"
 
 [[rulesets]]
 group = "Ⓜ️ Microsoft"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.list"
 
 [[rulesets]]
 group = "🍎 Apple"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.list"
 
 [[rulesets]]
 group = "🎮 Steam"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Steam.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Steam.list"
 
 [[rulesets]]
 group = "🎮 Ubisoft"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Ubisoft.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Ubisoft.list"
 
 [[rulesets]]
 group = "🎮 游戏平台"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.list"
 
 [[rulesets]]
 group = "🕊 X"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.list"
 
 [[rulesets]]
 group = "🚀 节点选择"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/PROXY.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/PROXY.list"
 
 [[rulesets]]
 group = "DIRECT"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.list"
 
 [[rulesets]]
 group = "DIRECT"
-ruleset = "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMax/ChinaMax.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaMax/ChinaMax.list"
 
 [[rulesets]]
 group = "DIRECT"
-ruleset = "https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Download_DIRECT.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/deYangar/Clash@main/Rule/Download_DIRECT.list"
 
 [[rulesets]]
 group = "DIRECT"
-ruleset = "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list"
+ruleset = "clash-classic:https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list"
 
 [[rulesets]]
 group = "DIRECT"

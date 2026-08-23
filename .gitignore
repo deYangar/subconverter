@@ -9,3 +9,5 @@ scripts/yaml-cpp
 src/.DS_Store
 
 build
+# 本地运行配置（含部署环境相关设置），禁止提交
+base/pref.toml

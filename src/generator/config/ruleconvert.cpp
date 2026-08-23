@@ -377,28 +377,18 @@ void rulesetToSurge(INIReader &base_rule, std::vector<RulesetContent> &ruleset_c
             }
             else if(isLink(rule_path))
             {
-                if(surge_ver > 2)
+                // [MOD 2026-08-22] 所有类型规则集统一直接引用原始 URL（cdn/github），不经过 subconverter API 转发
+                if(surge_ver > 2 || surge_ver == -3)
                 {
-                    if(x.rule_type != RULESET_SURGE)
-                    {
-                        if(!remote_path_prefix.empty())
-                            strLine = "RULE-SET," + remote_path_prefix + "/getruleset?type=1&url=" + urlSafeBase64Encode(rule_path_typed) + "," + rule_group;
-                        else
-                            continue;
-                    }
-                    else
-                        strLine = "RULE-SET," + rule_path + "," + rule_group;
-
+                    strLine = "RULE-SET," + rule_path + "," + rule_group;
                     if(x.update_interval)
                         strLine += ",update-interval=" + std::to_string(x.update_interval);
-
                     allRules.emplace_back(strLine);
                     continue;
                 }
-                else if(surge_ver == -1 && !remote_path_prefix.empty())
+                else if(surge_ver == -1)
                 {
-                    strLine = remote_path_prefix + "/getruleset?type=2&url=" + urlSafeBase64Encode(rule_path_typed) + "&group=" + urlSafeBase64Encode(rule_group);
-                    strLine += ", tag=" + rule_group + ", enabled=true";
+                    strLine = rule_path + ", tag=" + rule_group + ", force-policy=" + rule_group + ", enabled=true";
                     base_rule.set("filter_remote", "{NONAME}", strLine);
                     continue;
                 }

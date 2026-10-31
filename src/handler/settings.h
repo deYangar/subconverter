@@ -62,7 +62,7 @@ struct Settings
     std::string surgeSSRPath, quanXDevID;
 
     //cache system
-    bool serveCacheOnFetchFail = false;
+    bool serveCacheOnFetchFail = true; //拉取失败回退旧缓存（默认开：上游规则集被阻断时保住规则不缺失；pref 可显式关闭）
     int cacheSubscription = 60, cacheConfig = 300, cacheRuleset = 21600;
     int maxFetchRetries = 3; //拉取失败最大尝试次数（1=不重试只试一次，总尝试次数等于该值）
 

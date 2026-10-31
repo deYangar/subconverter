@@ -3,6 +3,7 @@
 #include <sys/stat.h>
 //#include <mutex>
 #include <thread>
+#include <chrono>
 #include <atomic>
 
 #include <curl/curl.h>
@@ -308,6 +309,25 @@ std::string webGet(const std::string &url, const std::string &proxy, unsigned in
     FetchArgument argument {HTTP_GET, url, proxy, nullptr, request_headers, nullptr, cache_ttl};
     FetchResult fetch_res {&return_code, &content, response_headers, nullptr};
 
+    //拉取失败重试：非 200 时最多尝试 global.maxFetchRetries 次（默认 3），间隔 1s/2s 递增
+    auto curlGetWithRetry = [&]()
+    {
+        int attempts = global.maxFetchRetries > 0 ? global.maxFetchRetries : 1;
+        for(int i = 0; i < attempts; i++)
+        {
+            content.clear();
+            curlGet(argument, fetch_res);
+            if(return_code == 200)
+                return true;
+            if(i < attempts - 1)
+            {
+                writeLog(0, "Fetch failed with code " + std::to_string(return_code) + ", retrying " + std::to_string(i + 2) + "/" + std::to_string(attempts) + ": '" + url + "'");
+                std::this_thread::sleep_for(std::chrono::milliseconds(1000 * (i + 1)));
+            }
+        }
+        return false;
+    };
+
     if (startsWith(url, "data:"))
         return dataGet(url);
     // cache system
@@ -335,7 +355,7 @@ std::string webGet(const std::string &url, const std::string &proxy, unsigned in
         else
             writeLog(0, "CACHE NOT EXIST: '" + url + "', creating new cache.");
         //content = curlGet(url, proxy, response_headers, return_code); // try to fetch data
-        curlGet(argument, fetch_res);
+        curlGetWithRetry();
         if(return_code == 200) // success, save new cache
         {
             //guarded_mutex guard(cache_rw_lock);
@@ -363,7 +383,7 @@ std::string webGet(const std::string &url, const std::string &proxy, unsigned in
         return content;
     }
     //return curlGet(url, proxy, response_headers, return_code);
-    curlGet(argument, fetch_res);
+    curlGetWithRetry();
     return content;
 }
 

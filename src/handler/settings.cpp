@@ -553,6 +553,7 @@ void readYAMLConf(YAML::Node &node)
                 node["advanced"]["cache_config"] >> global.cacheConfig;
                 node["advanced"]["cache_ruleset"] >> global.cacheRuleset;
                 node["advanced"]["serve_cache_on_fetch_fail"] >> global.serveCacheOnFetchFail;
+                node["advanced"]["max_fetch_retries"] >> global.maxFetchRetries;
             }
             else
                 global.cacheSubscription = global.cacheConfig = global.cacheRuleset = 0; //disable cache
@@ -1060,6 +1061,7 @@ void readConf()
             ini.get_int_if_exist("cache_config", global.cacheConfig);
             ini.get_int_if_exist("cache_ruleset", global.cacheRuleset);
             ini.get_bool_if_exist("serve_cache_on_fetch_fail", global.serveCacheOnFetchFail);
+            ini.get_int_if_exist("max_fetch_retries", global.maxFetchRetries);
         }
         else
         {

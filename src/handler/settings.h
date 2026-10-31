@@ -64,6 +64,7 @@ struct Settings
     //cache system
     bool serveCacheOnFetchFail = false;
     int cacheSubscription = 60, cacheConfig = 300, cacheRuleset = 21600;
+    int maxFetchRetries = 3; //拉取失败最大尝试次数（1=不重试只试一次，总尝试次数等于该值）
 
     //limits
     size_t maxAllowedRulesets = 64, maxAllowedRules = 32768;
